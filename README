@@ -1,0 +1,34 @@
+# BRANZEU MIHNEA
+
+OVERVIEW:
+This is a simplified version of a file system project. It is able to create,
+delete, rename and display file-like and directory-like structures, simulating
+the logic of an operating system. The program is built inside a main loop which
+awaits for commands, until the "stop" command is given. The supported commands
+are similar to the available ones in a Linux shell, such as "cd", "tree", "mkdir",
+"rmdir", "touch", "rm". Dynamic memory allocation is used when managing the 
+structures, and each time a structure becomes unused, its memory is freed.
+
+DATA STRUCTURES:
+The entire data is stored in the "home" folder, which is created autommatically
+at the start of the program. The directory and file systems are designed to resemble
+simply linked lists. The layout of the structures is as follows:
+-> FILE: It has a name, a pointer to its parent directory, and a pointer to
+    the next file in the list
+-> DIRECTORY: It has a name, pointers to the heads of both the file and child
+    directory children.
+
+FUNCTIONS:
+At any point, the current directory is memorised, so new elements could be added.
+-> TOUCH, MKDIR: Memory is allocated for the new structures, and then they are
+    included in their corresponding list.
+-> RM, RMDIR: The element is removed from the list, and its memory is freed
+-> PWD: Goes to the home directory recursively, forming the string containing the
+    path
+-> CD: Modifies the address the current directory points at
+-> LS: Prints the elements stored in the current directory
+-> TREE: Displays the hierarchy of elements, files and folders, starting from the
+    current directory
+-> MV: Removes the file/folder from the list, changes its name and makes use of the
+    helper functions in order to add it back at the end of the system
+-> STOP: Stops the execution of the program and frees all the memory
